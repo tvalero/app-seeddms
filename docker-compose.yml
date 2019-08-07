@@ -3,7 +3,9 @@ version: '2'
 services:
 
   bibbox-seeddms:
-    image: bibbox/seeddms
+    image: quay.io/mivegec/seeddms:5.1.10
+    build:
+      context: images/seeddms
     container_name:  bibbox-seeddms
     links:
       - bibbox-seeddms-db:seeddms-db
@@ -16,7 +18,7 @@ services:
       - bibbox-seeddms-data
 
   bibbox-seeddms-db:
-    image: mariadb
+    image: mariadb:10.3
     container_name: bibbox-seeddms-db
     user: root
     environment:
