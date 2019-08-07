@@ -3,7 +3,7 @@ version: '2'
 services:
 
   bibbox-seeddms:
-    image: quay.io/mivegec/seeddms:5.1.10
+    image: quay.io/mivegec/seeddms:dev
     build:
       context: images/seeddms
     container_name:  bibbox-seeddms
