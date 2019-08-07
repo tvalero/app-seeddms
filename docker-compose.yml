@@ -7,16 +7,17 @@ services:
     build:
       context: images/seeddms
     container_name:  bibbox-seeddms
+    restart: always  
     links:
       - bibbox-seeddms-db:seeddms-db
     ports:
       - "8065:80"
     depends_on:
       - bibbox-seeddms-db
-      - bibbox-seeddms-data
-    volumes_from: 
-      - bibbox-seeddms-data
-
+    volumes: 
+      - "./data/seeddms:/var/www/seeddms51x/data:rw"
+      - "./conf/settings.xml:/var/www/seeddms51x/conf/settings.xml:rw"
+      
   bibbox-seeddms-db:
     image: mariadb:10.3
     container_name: bibbox-seeddms-db
@@ -26,14 +27,6 @@ services:
       - MYSQL_DATABASE=seeddms
       - MYSQL_USER=seeddms
       - MYSQL_PASSWORD=seeddms4bibbox
-    volumes_from: 
-      - bibbox-seeddms-data
-    depends_on:
-      - bibbox-seeddms-data
-
-  bibbox-seeddms-data:
-    image: busybox
-    container_name: bibbox-seeddms-data
     volumes:
-      - ./data/var/lib/mysql:/var/lib/mysql
-      - ./data/var/www/seeddms51x/data:/var/www/seeddms51x/data
+      - "./data/mysql:/var/lib/mysql:rw"
+
