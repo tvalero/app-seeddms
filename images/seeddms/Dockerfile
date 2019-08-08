@@ -43,7 +43,7 @@ RUN a2enmod php7 && a2enmod rewrite && a2enmod dav && a2enmod dav_fs
 RUN mkdir -p /var/www/seeddms51x
 
 RUN curl -L https://sourceforge.net/projects/seeddms/files/seeddms-$SEEDDMS_VERSION/seeddms-quickstart-$SEEDDMS_VERSION.tar.gz/download > seeddms-quickstart-$SEEDDMS_VERSION.tar.gz  && \
-tar xvzf seeddms-quickstart-$SEEDDMS_VERSION.tar.gz --directory /var/www/seeddms51x/ && \
+tar xvzf seeddms-quickstart-$SEEDDMS_VERSION.tar.gz --directory /var/www/ && \
 pear install Log && pear channel-discover pear.dotkernel.com/zf1/svn && pear install zend/zend && pear install HTTP_WebDAV_Server-1.0.0RC8 && \
 rm seeddms*
 
