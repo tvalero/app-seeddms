@@ -5,7 +5,7 @@ mkdir -p data/mysql
 
 cp images/seeddms/configs/settings.xml  conf/settings.xml
 
-mkdir -p data/var/lib/mysql
+mkdir -p data/mysql
 mkdir -p data/lucene
 mkdir -p data/staging
 
