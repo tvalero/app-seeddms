@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+mkdir conf
 cp images/seeddms/configs/settings.xml  conf/settings.xml
 mkdir -p data/var/lib/mysql
 mkdir -p data/var/www/seeddms51x/data/lucene
