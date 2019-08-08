@@ -108,7 +108,7 @@
       dbUser = "seeddms"
       dbPass = "seeddms4bibbox"
       doNotCheckVersion="false"
-      >
+      />
                       
     <!-- smtpServer: SMTP Server hostname
        - smtpPort: SMTP Server port
