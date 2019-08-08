@@ -71,9 +71,6 @@
       calendarDefaultView = "y"
       firstDayOfWeek = "0"
     />
-    <webdav
-      enableWebdavReplaceDoc="true"
-    />
   </site>
   <system>
     <!--
@@ -248,7 +245,6 @@
        - enableVersionDeletion: allow to delete versions after approval
        - enableVersionModification: allow to modify versions after approval
        - enableDuplicateDocNames: allow duplicate names in a folder
-       - enableDuplicateSubFolderNames: allow duplicate names in a folder
        - enableOwnerRevApp: XXX
        - enableSelfRevApp: XXX
        - presetExpirationDate: XXX
@@ -261,7 +257,6 @@
       enableVersionDeletion = "true"
       enableVersionModification = "true"
       enableDuplicateDocNames = "true"
-      enableDuplicateSubFolderNames = "true"
       enableOwnerRevApp = "false"
       enableSelfRevApp = "false"
       presetExpirationDate = ""

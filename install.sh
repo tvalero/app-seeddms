@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
-mkdir -p data/var/lib/mysql
-mkdir -p data/var/www/seeddms51x/data/lucene
-mkdir -p data/var/www/seeddms51x/data/staging
+mkdir -p conf
+mkdir -p data/seeddms
+mkdir -p data/seeddms/lucene
+mkdir -p data/seeddms/staging
+
+mkdir -p data/mysql
+
+cp images/seeddms/configs/settings.xml  conf/settings.xml
+
+mkdir -p data/mysql
+
 chmod -R 777 data
-docker-compose up -d
+#docker-compose up -d
