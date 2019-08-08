@@ -97,8 +97,19 @@
        - dbUser: username for database-access
        - dbPass: password for database-access
     -->    
+<!--      
     <database dbDriver="sqlite" dbHostname="localhost" dbDatabase="/var/www/seeddms51x/data/content.db" dbUser="seeddms" dbPass="seeddms" doNotCheckVersion="false">
     </database>
+-->
+    <database
+      dbDriver = "mysql"
+      dbHostname = "seeddms-db:3306"
+      dbDatabase = "seeddms"
+      dbUser = "seeddms"
+      dbPass = "seeddms4bibbox"
+      doNotCheckVersion="false"
+      />
+                      
     <!-- smtpServer: SMTP Server hostname
        - smtpPort: SMTP Server port
        - smtpSendFrom: Send from

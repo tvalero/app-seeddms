@@ -21,7 +21,6 @@ services:
   bibbox-seeddms-db:
     image: mariadb:10.3
     container_name: bibbox-seeddms-db
-    user: root
     environment:
       - MYSQL_ROOT_PASSWORD=bibbox
       - MYSQL_DATABASE=seeddms
