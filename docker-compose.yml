@@ -2,6 +2,12 @@ version: '2'
 
 services:
 
+  bibbox-ldap:
+    image: rroemhild/test-openldap
+    restart: always  
+#    ports:
+#      - "389:389"
+        
   bibbox-seeddms:
     image: quay.io/mivegec/seeddms:dev
     build:
