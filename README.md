@@ -1,3 +1,5 @@
+[![Docker Repository on Quay](https://quay.io/repository/mivegec/seeddms/status "Docker Repository on Quay")](https://quay.io/repository/mivegec/seeddms)
+
 # SeedDMS BIBBOX application
 
 This container can be installed as [BIBBOX APP](http://bibbox.readthedocs.io/en/latest/admin-documentation/ "BIBBOX App Store") or standalone. 

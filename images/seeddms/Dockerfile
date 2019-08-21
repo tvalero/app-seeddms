@@ -13,17 +13,13 @@ RUN apt-get update && apt-get install -y apt-utils && apt-get install -my wget g
 RUN echo 'deb http://packages.dotdeb.org jessie all' > /etc/apt/sources.list.d/dotdeb.list && \
     curl http://www.dotdeb.org/dotdeb.gpg | apt-key add -
 
-RUN \
-    apt-get install libldap2-dev -y && \
-    docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
-    docker-php-ext-install ldap
-
 RUN rm /etc/apt/preferences.d/no-debian-php && \
     apt-get update && \
     apt-get -q -y install \
         libpng-dev \
         imagemagick \
         libmcrypt-dev \
+        libldap2-dev \
         php-pear \
         poppler-utils \
         catdoc \
@@ -38,14 +34,10 @@ RUN rm /etc/apt/preferences.d/no-debian-php && \
         php7.0-zip \
         php7.0-soap \
         mysql-client \
-          libmysqlclient-dev
-          
-RUN \
-    apt-get install libldap2-dev -y && \
-    docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
-    docker-php-ext-install ldap
-
-RUN docker-php-ext-install gd mysqli pdo pdo_mysql
+        libmysqlclient-dev  
+        
+RUN docker-php-ext-configure ldap --with-libdir=lib/x86_64-linux-gnu/ && \
+    docker-php-ext-install gd mysqli pdo pdo_mysql
 
 RUN a2enmod php7 && a2enmod rewrite && a2enmod dav && a2enmod dav_fs
 
@@ -54,14 +46,15 @@ RUN mkdir -p /var/www/seeddms51x
 RUN curl -L https://sourceforge.net/projects/seeddms/files/seeddms-$SEEDDMS_VERSION/seeddms-quickstart-$SEEDDMS_VERSION.tar.gz/download > seeddms-quickstart-$SEEDDMS_VERSION.tar.gz  && \
 tar xvzf seeddms-quickstart-$SEEDDMS_VERSION.tar.gz --directory /var/www/ && \
 pear install Log && pear channel-discover pear.dotkernel.com/zf1/svn && pear install zend/zend && pear install HTTP_WebDAV_Server-1.0.0RC8 && \
-rm seeddms*
+rm seeddms* && \
+chown -R www-data:www-data /var/www/seeddms51x
 
 COPY configs/create_tables-innodb.sql /var/www/seeddms51x/install/create_tables-innodb.sql
 COPY configs/php.ini /usr/local/etc/php/
 COPY configs/000-default.conf /etc/apache2/sites-available/
 COPY configs/settings.xml /var/www/seeddms51x/conf/settings.xml
 
-RUN chown -R www-data:www-data /var/www/seeddms51x
+RUN touch                       /var/www/seeddms51x/conf/ENABLE_INSTALL_TOOL && \
+    chown -R www-data:www-data  /var/www/seeddms51x/conf/ENABLE_INSTALL_TOOL
 
-RUN touch /var/www/seeddms51x/conf/ENABLE_INSTALL_TOOL
 
