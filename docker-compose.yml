@@ -6,21 +6,22 @@ services:
     image: quay.io/mivegec/seeddms:dev
     build:
       context: images/seeddms
-    container_name:  bibbox-seeddms
+    container_name:  dev-bibbox-seeddms
     restart: always  
     links:
       - bibbox-seeddms-db:seeddms-db
     ports:
-      - "8065:80"
+      - "8066:80"
     depends_on:
       - bibbox-seeddms-db
     volumes: 
       - "./data/seeddms:/var/www/seeddms51x/data:rw"
-      - "./conf/settings.xml:/var/www/seeddms51x/conf/settings.xml:rw"
+      - "./conf/:/var/www/seeddms51x/conf/:rw"
+      - "./phpinfo.php:/var/www/seeddms51x/seeddms/phpinfo.php:rw"
       
   bibbox-seeddms-db:
     image: mariadb:10.3
-    container_name: bibbox-seeddms-db
+    container_name: dev-bibbox-seeddms-db
     environment:
       - MYSQL_ROOT_PASSWORD=bibbox
       - MYSQL_DATABASE=seeddms
