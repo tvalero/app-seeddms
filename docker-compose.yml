@@ -17,13 +17,13 @@ services:
     links:
       - bibbox-seeddms-db:seeddms-db
     ports:
-      - "8066:80"
+      - "8484:80"
     depends_on:
       - bibbox-seeddms-db
     volumes: 
       - "./data/seeddms:/var/www/seeddms51x/data:rw"
       - "./conf/:/var/www/seeddms51x/conf/:rw"
-      - "./phpinfo.php:/var/www/seeddms51x/seeddms/phpinfo.php:rw"
+#      - "./phpinfo.php:/var/www/seeddms51x/seeddms/phpinfo.php:rw"
       
   bibbox-seeddms-db:
     image: mariadb:10.3
